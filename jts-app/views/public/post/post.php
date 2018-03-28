@@ -1,3 +1,4 @@
+<!-- Ini komentar -->
 <script type="text/javascript">
 $(function() {
 	$('.small-gallery').bind('click',function(e) {
