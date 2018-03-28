@@ -1,0 +1,16 @@
+@import "../../fonts/css/font-awesome.min.css";
+@import "../../fonts/css/fonts-googleapis.css";
+
+.box > .icon { text-align: center; position: relative; width: auto;}
+.box > .icon > .image { position: relative; z-index: 2; margin: auto; width: 88px; height: 88px; border: 8px solid white; line-height: 100px; border-radius: 50%; background: #63B76C; vertical-align: middle; }
+.box > .icon:hover > .image { background: #093d6b; }
+.box > .icon > .image > i { font-size: 36px !important; color: #fff !important; }
+.box > .icon:hover > .image > i { color: white !important; }
+.box > .icon > .info { margin-top: -24px; background: rgba(0, 0, 0, 0.14); border: 1px solid #e0e0e0; padding: 17px 0 10px 0; border-radius: 10px;}
+.box > .icon:hover > .info { background: rgba(0, 0, 0, 0.08); border-color: #e0e0e0; color: #093d6b; }
+.box > .icon > .info > h3.title { font-family: "Roboto",sans-serif !important; font-size: 16px; color: #222; font-weight: 500; }
+.box > .icon > .info > p { font-family: "Roboto",sans-serif !important; font-size: 13px; color: #666; line-height: 1.5em; margin: 10px;}
+.box > .icon:hover > .info > h3.title, .box > .icon:hover > .info > p, .box > .icon:hover > .info > .more > a { color: #093d6b; }
+.box > .icon > .info > .more a { font-family: "Roboto",sans-serif !important; font-size: 12px; color: #222; line-height: 12px; text-transform: uppercase; text-decoration: none; }
+.box > .icon:hover > .info > .more > a { color: #fff; padding: 6px 8px; background-color: #093d6b; border-radius: 5%;}
+.box .space { height: 30px; }
