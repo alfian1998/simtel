@@ -299,13 +299,14 @@ class Web extends CI_Controller{
 		$data['p'] = $p;
 		$data['o'] = $o;
 		$data['ses_txt_search'] = @$_SESSION['ses_txt_search'];
-		$data['ses_txt_search'] = @$_SESSION['ses_txt_search'];
-		$data['ses_tgl_pendataan'] = @$_SESSION['ses_tgl_pendataan'];
+		$data['ses_tahun'] = @$_SESSION['ses_tahun'];
+		$data['ses_bulan'] = @$_SESSION['ses_bulan'];
 		$data['ses_kecamatan'] = @$_SESSION['ses_kecamatan'];
 		//
 		$data['paging'] = $this->menara_model->paging_menara($p,$o);
 		$data['list_menara'] = $this->menara_model->list_menara($o, $data['paging']->offset, $data['paging']->per_page);
 		$data['list_kecamatan'] = $this->menara_model->get_kecamatan();
+		$data['list_tahun'] = $this->menara_model->get_tahun();
 		//
 		$this->load->view('public/template/header',$header);		
 		$this->load->view('public/menara/menara',$data);
@@ -383,12 +384,14 @@ class Web extends CI_Controller{
 		$data['p'] = $p;
 		$data['o'] = $o;
 		$data['ses_txt_search'] = @$_SESSION['ses_txt_search'];
-		$data['ses_tgl_pendataan'] = @$_SESSION['ses_tgl_pendataan'];
+		$data['ses_tahun'] = @$_SESSION['ses_tahun'];
+		$data['ses_bulan'] = @$_SESSION['ses_bulan'];
 		$data['ses_kecamatan'] = @$_SESSION['ses_kecamatan'];
 		//
 		$data['paging'] = $this->warnet_model->paging_warnet($p,$o);
 		$data['list_warnet'] = $this->warnet_model->list_warnet($o, $data['paging']->offset, $data['paging']->per_page);
 		$data['list_kecamatan'] = $this->warnet_model->get_kecamatan();
+		$data['list_tahun'] = $this->warnet_model->get_tahun();
 		//
 		$this->load->view('public/template/header',$header);		
 		$this->load->view('public/warnet/warnet',$data);
@@ -448,7 +451,7 @@ class Web extends CI_Controller{
         foreach($data['list_warnet'] as $key => $warnet) {
         	$marker = array();
 	        $marker['position'] 		  = @$warnet['ordinat_s'].','.@$warnet['ordinat_e'];
-	        $marker['infowindow_content'] = '<img width="230" alt="" src="'.base_url().'assets/images/data/warnet/'.@$warnet['warnet_foto'].'"> <br><br>'.'<table><tr><td class="column-spacing">Pemilik</td><td class="column-spacing">:</td><td class="column-spacing">'.@$warnet['pemilik_nm'].'</td></tr><tr><td class="column-spacing">Latitude</td> <td class="column-spacing">:</td> <td class="column-spacing">'.@$warnet['ordinat_s'].'</td></tr><tr><td class="column-spacing">'.'Longitude</td> <td class="column-spacing">:</td> <td class="column-spacing">'.@$warnet['ordinat_e'].'</td></tr></table>';
+	        $marker['infowindow_content'] = '<img width="230" alt="" src="'.base_url().'assets/images/data/warnet/'.@$warnet['warnet_foto'].'"> <br><br>'.'<table><tr><td class="column-spacing">Nama Warnet</td><td class="column-spacing">:</td><td class="column-spacing">'.@$warnet['warnet_nm'].'</td></tr><tr><td class="column-spacing">Latitude</td> <td class="column-spacing">:</td> <td class="column-spacing">'.@$warnet['ordinat_s'].'</td></tr><tr><td class="column-spacing">'.'Longitude</td> <td class="column-spacing">:</td> <td class="column-spacing">'.@$warnet['ordinat_e'].'</td></tr></table>';
 	        $marker['icon'] 			  = base_url('assets/images/icon/data/icon-warnet.png');;        	
 	    	$this->googlemaps->add_marker($marker);
 	    }
@@ -466,12 +469,14 @@ class Web extends CI_Controller{
 		$data['p'] = $p;
 		$data['o'] = $o;
 		$data['ses_txt_search'] = @$_SESSION['ses_txt_search'];
-		$data['ses_tgl_pendataan'] = @$_SESSION['ses_tgl_pendataan'];
+		$data['ses_tahun'] = @$_SESSION['ses_tahun'];
+		$data['ses_bulan'] = @$_SESSION['ses_bulan'];
 		$data['ses_kecamatan'] = @$_SESSION['ses_kecamatan'];
 		//
 		$data['paging'] = $this->warsel_model->paging_warsel($p,$o);
 		$data['list_warsel'] = $this->warsel_model->list_warsel($o, $data['paging']->offset, $data['paging']->per_page);
 		$data['list_kecamatan'] = $this->warsel_model->get_kecamatan();
+		$data['list_tahun'] = $this->warsel_model->get_tahun();
 		//
 		$this->load->view('public/template/header',$header);		
 		$this->load->view('public/warsel/warsel',$data);
@@ -503,18 +508,60 @@ class Web extends CI_Controller{
 		$this->load->view('public/chart/horizontal_chart_kel',$data);
 	}
 
+	function maps_warsel() {			
+		$header = $this->config_model->general();	
+		//
+		$data['ses_kecamatan_id']	   = @$_SESSION['ses_kecamatan_id'];
+		$data['ses_kelurahan_id'] 	   = @$_SESSION['ses_kelurahan_id'];
+		// maps : init        
+		$this->load->library('googlemaps');
+    	// $config['center'] 	 = '-7.641381614857501, 109.65763030151368';
+    	$config['center'] 	 = '-7.652765, 109.612744';
+    	$config['zoom'] 	 = '11'; // auto
+        $this->googlemaps->initialize($config);
+        // maps : polygon
+        $polygon = array();
+        $polygon['points'] 			= $this->maps_model->list_points(); 
+        $polygon['strokeColor']  	= '#F00000'; // Color = RED
+        $polygon['strokeOpacity'] 	= '0.8';
+        $polygon['strokeWeight'] 	= '2';	
+        $polygon['fillColor'] 		= '';
+        $polygon['fillOpacity']		= '0';
+        $this->googlemaps->add_polygon($polygon);
+		// view all ordinat
+		//	
+		$data['list_warsel']  = $this->warsel_model->get_all_warsel();
+		$data['list_kecamatan'] = $this->warsel_model->get_kecamatan();
+        // maps : marker
+        foreach($data['list_warsel'] as $key => $warsel) {
+        	$marker = array();
+	        $marker['position'] 		  = @$warsel['ordinat_s'].','.@$warsel['ordinat_e'];
+	        $marker['infowindow_content'] = '<img width="230" alt="" src="'.base_url().'assets/images/data/warsel/'.@$warsel['warsel_foto'].'"> <br><br>'.'<table><tr><td class="column-spacing">Nama Warsel</td><td class="column-spacing">:</td><td class="column-spacing">'.@$warsel['warsel_nm'].'</td></tr><tr><td class="column-spacing">Latitude</td> <td class="column-spacing">:</td> <td class="column-spacing">'.@$warsel['ordinat_s'].'</td></tr><tr><td class="column-spacing">'.'Longitude</td> <td class="column-spacing">:</td> <td class="column-spacing">'.@$warsel['ordinat_e'].'</td></tr></table>';
+	        $marker['icon'] 			  = base_url('assets/images/icon/data/icon-warsel.png');;        	
+	    	$this->googlemaps->add_marker($marker);
+	    }
+		//		
+        $data['map'] = $this->googlemaps->create_map();
+		//
+		$this->load->view('public/template/header',$header);		
+		$this->load->view('public/warsel/maps_warsel',$data);
+		$this->load->view('public/template/footer');	
+	}
+
 	function penyiaran($p=1, $o=0) {
 		$header = $this->config_model->general();		
 		//
 		$data['p'] = $p;
 		$data['o'] = $o;
 		$data['ses_txt_search'] = @$_SESSION['ses_txt_search'];
-		$data['ses_tgl_pendataan'] = @$_SESSION['ses_tgl_pendataan'];
+		$data['ses_tahun'] = @$_SESSION['ses_tahun'];
+		$data['ses_bulan'] = @$_SESSION['ses_bulan'];
 		$data['ses_kecamatan'] = @$_SESSION['ses_kecamatan'];
 		//
 		$data['paging'] = $this->penyiaran_model->paging_penyiaran($p,$o);
 		$data['list_penyiaran'] = $this->penyiaran_model->list_penyiaran($o, $data['paging']->offset, $data['paging']->per_page);
 		$data['list_kecamatan'] = $this->penyiaran_model->get_kecamatan();
+		$data['list_tahun'] = $this->penyiaran_model->get_tahun();
 		//
 		$this->load->view('public/template/header',$header);		
 		$this->load->view('public/penyiaran/penyiaran',$data);
@@ -546,18 +593,60 @@ class Web extends CI_Controller{
 		$this->load->view('public/chart/horizontal_chart_kel',$data);
 	}
 
+	function maps_penyiaran() {			
+		$header = $this->config_model->general();	
+		//
+		$data['ses_kecamatan_id']	   = @$_SESSION['ses_kecamatan_id'];
+		$data['ses_kelurahan_id'] 	   = @$_SESSION['ses_kelurahan_id'];
+		// maps : init        
+		$this->load->library('googlemaps');
+    	// $config['center'] 	 = '-7.641381614857501, 109.65763030151368';
+    	$config['center'] 	 = '-7.652765, 109.612744';
+    	$config['zoom'] 	 = '11'; // auto
+        $this->googlemaps->initialize($config);
+        // maps : polygon
+        $polygon = array();
+        $polygon['points'] 			= $this->maps_model->list_points(); 
+        $polygon['strokeColor']  	= '#F00000'; // Color = RED
+        $polygon['strokeOpacity'] 	= '0.8';
+        $polygon['strokeWeight'] 	= '2';	
+        $polygon['fillColor'] 		= '';
+        $polygon['fillOpacity']		= '0';
+        $this->googlemaps->add_polygon($polygon);
+		// view all ordinat
+		//	
+		$data['list_penyiaran']  = $this->penyiaran_model->get_all_penyiaran();
+		$data['list_kecamatan'] = $this->penyiaran_model->get_kecamatan();
+        // maps : marker
+        foreach($data['list_penyiaran'] as $key => $penyiaran) {
+        	$marker = array();
+	        $marker['position'] 		  = @$penyiaran['ordinat_s'].','.@$penyiaran['ordinat_e'];
+	        $marker['infowindow_content'] = '<img width="230" alt="" src="'.base_url().'assets/images/data/penyiaran/'.@$penyiaran['penyiaran_foto'].'"> <br><br>'.'<table><tr><td class="column-spacing">Radio/TV</td><td class="column-spacing">:</td><td class="column-spacing">'.@$penyiaran['radio_nm'].'</td></tr><tr><td class="column-spacing">Latitude</td> <td class="column-spacing">:</td> <td class="column-spacing">'.@$penyiaran['ordinat_s'].'</td></tr><tr><td class="column-spacing">'.'Longitude</td> <td class="column-spacing">:</td> <td class="column-spacing">'.@$penyiaran['ordinat_e'].'</td></tr></table>';
+	        $marker['icon'] 			  = base_url('assets/images/icon/data/icon-penyiaran.png');;        	
+	    	$this->googlemaps->add_marker($marker);
+	    }
+		//		
+        $data['map'] = $this->googlemaps->create_map();
+		//
+		$this->load->view('public/template/header',$header);		
+		$this->load->view('public/penyiaran/maps_penyiaran',$data);
+		$this->load->view('public/template/footer');	
+	}
+
 	function extension($p=1, $o=0) {
 		$header = $this->config_model->general();		
 		//
 		$data['p'] = $p;
 		$data['o'] = $o;
 		$data['ses_txt_search'] = @$_SESSION['ses_txt_search'];
-		$data['ses_tgl_pendataan'] = @$_SESSION['ses_tgl_pendataan'];
+		$data['ses_tahun'] = @$_SESSION['ses_tahun'];
+		$data['ses_bulan'] = @$_SESSION['ses_bulan'];
 		$data['ses_opd'] = @$_SESSION['ses_opd'];
 		//
 		$data['paging'] = $this->extension_model->paging_extension($p,$o);
 		$data['list_extension'] = $this->extension_model->list_extension($o, $data['paging']->offset, $data['paging']->per_page);
 		$data['list_opd'] = $this->extension_model->get_all_opd();
+		$data['list_tahun'] = $this->extension_model->get_tahun();
 		//
 		$this->load->view('public/template/header',$header);		
 		$this->load->view('public/extension/extension',$data);
@@ -594,12 +683,14 @@ class Web extends CI_Controller{
 		$data['p'] = $p;
 		$data['o'] = $o;
 		$data['ses_txt_search'] = @$_SESSION['ses_txt_search'];
-		$data['ses_tgl_pendataan'] = @$_SESSION['ses_tgl_pendataan'];
+		$data['ses_tahun'] = @$_SESSION['ses_tahun'];
+		$data['ses_bulan'] = @$_SESSION['ses_bulan'];
 		$data['ses_opd'] = @$_SESSION['ses_opd'];
 		//
 		$data['paging'] = $this->telepon_model->paging_telepon($p,$o);
 		$data['list_telepon'] = $this->telepon_model->list_telepon($o, $data['paging']->offset, $data['paging']->per_page);
 		$data['list_opd'] = $this->extension_model->get_all_opd();
+		$data['list_tahun'] = $this->telepon_model->get_tahun();
 		//
 		$this->load->view('public/template/header',$header);		
 		$this->load->view('public/telepon/telepon',$data);
@@ -614,7 +705,7 @@ class Web extends CI_Controller{
 		$data['p'] = $p;
 		$data['o'] = $o;
 		$data['ses_tahun'] = @$_SESSION['ses_tahun'];
-		$data['ses_jenis_laporan'] = @$_SESSION['ses_jenis_laporan'];
+		$data['ses_bulan'] = @$_SESSION['ses_bulan'];
 		$data['filter_search'] = @$_SESSION['filter_search'];
 		//
 		if($data['filter_search'] == 'true'):
@@ -636,12 +727,14 @@ class Web extends CI_Controller{
 		$data['p'] = $p;
 		$data['o'] = $o;
 		$data['ses_txt_search'] = @$_SESSION['ses_txt_search'];
-		$data['ses_tgl_pendataan'] = @$_SESSION['ses_tgl_pendataan'];
+		$data['ses_tahun'] = @$_SESSION['ses_tahun'];
+		$data['ses_bulan'] = @$_SESSION['ses_bulan'];
 		$data['ses_kecamatan'] = @$_SESSION['ses_kecamatan'];
 		//
 		$data['paging'] = $this->sinyal_model->paging_sinyal($p,$o);
 		$data['list_sinyal'] = $this->sinyal_model->list_sinyal($o, $data['paging']->offset, $data['paging']->per_page);
 		$data['list_kecamatan'] = $this->sinyal_model->get_kecamatan();
+		$data['list_tahun'] = $this->sinyal_model->get_tahun();
 		//
 		$this->load->view('public/template/header',$header);		
 		$this->load->view('public/sinyal/sinyal',$data);
@@ -671,6 +764,46 @@ class Web extends CI_Controller{
 		$this->load->view('public/template/footer');
 		$this->load->view('public/chart/horizontal_chart_kec',$data);
 		$this->load->view('public/chart/horizontal_chart_kel',$data);
+	}
+
+	function maps_sinyal() {			
+		$header = $this->config_model->general();	
+		//
+		$data['ses_kecamatan_id']	   = @$_SESSION['ses_kecamatan_id'];
+		$data['ses_kelurahan_id'] 	   = @$_SESSION['ses_kelurahan_id'];
+		// maps : init        
+		$this->load->library('googlemaps');
+    	// $config['center'] 	 = '-7.641381614857501, 109.65763030151368';
+    	$config['center'] 	 = '-7.652765, 109.612744';
+    	$config['zoom'] 	 = '11'; // auto
+        $this->googlemaps->initialize($config);
+        // maps : polygon
+        $polygon = array();
+        $polygon['points'] 			= $this->maps_model->list_points(); 
+        $polygon['strokeColor']  	= '#F00000'; // Color = RED
+        $polygon['strokeOpacity'] 	= '0.8';
+        $polygon['strokeWeight'] 	= '2';	
+        $polygon['fillColor'] 		= '';
+        $polygon['fillOpacity']		= '0';
+        $this->googlemaps->add_polygon($polygon);
+		// view all ordinat
+		//	
+		$data['list_sinyal']  = $this->sinyal_model->get_all_sinyal();
+		$data['list_kecamatan'] = $this->sinyal_model->get_kecamatan();
+        // maps : marker
+        foreach($data['list_sinyal'] as $key => $sinyal) {
+        	$marker = array();
+	        $marker['position'] 		  = @$sinyal['ordinat_s'].','.@$sinyal['ordinat_e'];
+	        $marker['infowindow_content'] = '<img width="230" alt="" src="'.base_url().'assets/images/data/sinyal/'.@$sinyal['sinyal_foto'].'"> <br><br>'.'<table><tr><td class="column-spacing">Nama Lokasi</td><td class="column-spacing">:</td><td class="column-spacing">'.@$sinyal['lokasi_nm'].'</td></tr><tr><td class="column-spacing">Latitude</td> <td class="column-spacing">:</td> <td class="column-spacing">'.@$sinyal['ordinat_s'].'</td></tr><tr><td class="column-spacing">'.'Longitude</td> <td class="column-spacing">:</td> <td class="column-spacing">'.@$sinyal['ordinat_e'].'</td></tr></table>';
+	        $marker['icon'] 			  = base_url('assets/images/icon/data/icon-sinyal.png');;        	
+	    	$this->googlemaps->add_marker($marker);
+	    }
+		//		
+        $data['map'] = $this->googlemaps->create_map();
+		//
+		$this->load->view('public/template/header',$header);		
+		$this->load->view('public/sinyal/maps_sinyal',$data);
+		$this->load->view('public/template/footer');	
 	}
 
 	function diagram_chart() {	
@@ -906,71 +1039,85 @@ class Web extends CI_Controller{
 	function search($id=null) {
 		if($id == 'menara') {
 			$ses_txt_search = $this->input->post('ses_txt_search');	
-			$ses_tgl_pendataan = $this->input->post('ses_tgl_pendataan');	
+			$ses_tahun = $this->input->post('ses_tahun');	
+			$ses_bulan = $this->input->post('ses_bulan');	
 			$ses_kecamatan = $this->input->post('ses_kecamatan');	
 			//	
 			$_SESSION['ses_txt_search'] = ($ses_txt_search != '') ? $ses_txt_search : false;
-			$_SESSION['ses_tgl_pendataan'] = ($ses_tgl_pendataan != '') ? $ses_tgl_pendataan : false;
+			$_SESSION['ses_tahun'] = ($ses_tahun != '') ? $ses_tahun : false;
+			$_SESSION['ses_bulan'] = ($ses_bulan != '') ? $ses_bulan : false;
 			$_SESSION['ses_kecamatan'] = ($ses_kecamatan != '') ? $ses_kecamatan : false;
 			//
 			redirect('web/menara');
 		} else if($id == 'warnet') {
 			$ses_txt_search = $this->input->post('ses_txt_search');		
-			$ses_tgl_pendataan = $this->input->post('ses_tgl_pendataan');		
+			$ses_tahun = $this->input->post('ses_tahun');		
+			$ses_bulan = $this->input->post('ses_bulan');		
 			$ses_kecamatan = $this->input->post('ses_kecamatan');		
 			//
 			$_SESSION['ses_txt_search'] = ($ses_txt_search != '') ? $ses_txt_search : false;
-			$_SESSION['ses_tgl_pendataan'] = ($ses_tgl_pendataan != '') ? $ses_tgl_pendataan : false;
+			$_SESSION['ses_tahun'] = ($ses_tahun != '') ? $ses_tahun : false;
+			$_SESSION['ses_bulan'] = ($ses_bulan != '') ? $ses_bulan : false;
 			$_SESSION['ses_kecamatan'] = ($ses_kecamatan != '') ? $ses_kecamatan : false;
 			//
 			redirect('web/warnet');
 		} else if($id == 'warsel') {
 			$ses_txt_search = $this->input->post('ses_txt_search');		
-			$ses_tgl_pendataan = $this->input->post('ses_tgl_pendataan');		
+			$ses_tahun = $this->input->post('ses_tahun');		
+			$ses_bulan = $this->input->post('ses_bulan');		
 			$ses_kecamatan = $this->input->post('ses_kecamatan');		
 			//
 			$_SESSION['ses_txt_search'] = ($ses_txt_search != '') ? $ses_txt_search : false;
-			$_SESSION['ses_tgl_pendataan'] = ($ses_tgl_pendataan != '') ? $ses_tgl_pendataan : false;
+			$_SESSION['ses_tahun'] = ($ses_tahun != '') ? $ses_tahun : false;
+			$_SESSION['ses_bulan'] = ($ses_bulan != '') ? $ses_bulan : false;
 			$_SESSION['ses_kecamatan'] = ($ses_kecamatan != '') ? $ses_kecamatan : false;
 			//
 			redirect('web/warsel');
 		} else if($id == 'penyiaran') {
 			$ses_txt_search = $this->input->post('ses_txt_search');		
-			$ses_tgl_pendataan = $this->input->post('ses_tgl_pendataan');		
+			$ses_tahun = $this->input->post('ses_tahun');		
+			$ses_bulan = $this->input->post('ses_bulan');		
 			$ses_kecamatan = $this->input->post('ses_kecamatan');		
 			//
 			$_SESSION['ses_txt_search'] = ($ses_txt_search != '') ? $ses_txt_search : false;
-			$_SESSION['ses_tgl_pendataan'] = ($ses_tgl_pendataan != '') ? $ses_tgl_pendataan : false;
+			$_SESSION['ses_tahun'] = ($ses_tahun != '') ? $ses_tahun : false;
+			$_SESSION['ses_bulan'] = ($ses_bulan != '') ? $ses_bulan : false;
 			$_SESSION['ses_kecamatan'] = ($ses_kecamatan != '') ? $ses_kecamatan : false;
 			//
 			redirect('web/penyiaran');
 		} else if($id == 'extension') {
 			$ses_txt_search = $this->input->post('ses_txt_search');		
-			$ses_tgl_pendataan = $this->input->post('ses_tgl_pendataan');		
+			$ses_tahun = $this->input->post('ses_tahun');		
+			$ses_bulan = $this->input->post('ses_bulan');		
 			$ses_opd = $this->input->post('ses_opd');		
 			//
 			$_SESSION['ses_txt_search'] = ($ses_txt_search != '') ? $ses_txt_search : false;
-			$_SESSION['ses_tgl_pendataan'] = ($ses_tgl_pendataan != '') ? $ses_tgl_pendataan : false;
+			$_SESSION['ses_tahun'] = ($ses_tahun != '') ? $ses_tahun : false;
+			$_SESSION['ses_bulan'] = ($ses_bulan != '') ? $ses_bulan : false;
 			$_SESSION['ses_opd'] = ($ses_opd != '') ? $ses_opd : false;
 			//
 			redirect('web/extension');
 		} else if($id == 'telepon') {
 			$ses_txt_search = $this->input->post('ses_txt_search');		
-			$ses_tgl_pendataan = $this->input->post('ses_tgl_pendataan');		
+			$ses_tahun = $this->input->post('ses_tahun');		
+			$ses_bulan = $this->input->post('ses_bulan');		
 			$ses_opd = $this->input->post('ses_opd');		
 			//
 			$_SESSION['ses_txt_search'] = ($ses_txt_search != '') ? $ses_txt_search : false;
-			$_SESSION['ses_tgl_pendataan'] = ($ses_tgl_pendataan != '') ? $ses_tgl_pendataan : false;
+			$_SESSION['ses_tahun'] = ($ses_tahun != '') ? $ses_tahun : false;
+			$_SESSION['ses_bulan'] = ($ses_bulan != '') ? $ses_bulan : false;
 			$_SESSION['ses_opd'] = ($ses_opd != '') ? $ses_opd : false;
 			//
 			redirect('web/telepon');
 		} else if($id == 'sinyal') {
 			$ses_txt_search = $this->input->post('ses_txt_search');		
-			$ses_tgl_pendataan = $this->input->post('ses_tgl_pendataan');		
+			$ses_tahun = $this->input->post('ses_tahun');		
+			$ses_bulan = $this->input->post('ses_bulan');		
 			$ses_kecamatan = $this->input->post('ses_kecamatan');		
 			//
 			$_SESSION['ses_txt_search'] = ($ses_txt_search != '') ? $ses_txt_search : false;
-			$_SESSION['ses_tgl_pendataan'] = ($ses_tgl_pendataan != '') ? $ses_tgl_pendataan : false;
+			$_SESSION['ses_tahun'] = ($ses_tahun != '') ? $ses_tahun : false;
+			$_SESSION['ses_bulan'] = ($ses_bulan != '') ? $ses_bulan : false;
 			$_SESSION['ses_kecamatan'] = ($ses_kecamatan != '') ? $ses_kecamatan : false;
 			//
 			redirect('web/sinyal');
@@ -990,6 +1137,30 @@ class Web extends CI_Controller{
 			$_SESSION['ses_kelurahan_id'] 		= ($ses_kelurahan_id != '') ? $ses_kelurahan_id : false;
 			//
 			redirect('web/maps_warnet');
+		} else if($id == 'maps_warsel') {
+			$ses_kecamatan_id 		= $this->input->post('ses_kecamatan_id');		
+			$ses_kelurahan_id 		= ($ses_kecamatan_id != '') ? $this->input->post('ses_kelurahan_id') : false;		
+			//
+			$_SESSION['ses_kecamatan_id'] 		= ($ses_kecamatan_id != '') ? $ses_kecamatan_id : false;
+			$_SESSION['ses_kelurahan_id'] 		= ($ses_kelurahan_id != '') ? $ses_kelurahan_id : false;
+			//
+			redirect('web/maps_warsel');
+		} else if($id == 'maps_penyiaran') {
+			$ses_kecamatan_id 		= $this->input->post('ses_kecamatan_id');		
+			$ses_kelurahan_id 		= ($ses_kecamatan_id != '') ? $this->input->post('ses_kelurahan_id') : false;		
+			//
+			$_SESSION['ses_kecamatan_id'] 		= ($ses_kecamatan_id != '') ? $ses_kecamatan_id : false;
+			$_SESSION['ses_kelurahan_id'] 		= ($ses_kelurahan_id != '') ? $ses_kelurahan_id : false;
+			//
+			redirect('web/maps_penyiaran');
+		} else if($id == 'maps_sinyal') {
+			$ses_kecamatan_id 		= $this->input->post('ses_kecamatan_id');		
+			$ses_kelurahan_id 		= ($ses_kecamatan_id != '') ? $this->input->post('ses_kelurahan_id') : false;		
+			//
+			$_SESSION['ses_kecamatan_id'] 		= ($ses_kecamatan_id != '') ? $ses_kecamatan_id : false;
+			$_SESSION['ses_kelurahan_id'] 		= ($ses_kelurahan_id != '') ? $ses_kelurahan_id : false;
+			//
+			redirect('web/maps_sinyal');
 		} 
 	}
 
@@ -1265,7 +1436,7 @@ class Web extends CI_Controller{
 			//
 			$html = '';
 			$html.= '<select name="ses_kelurahan_id" id="ses_kelurahan_id" class="chosen-select" style="width: 30%">';
-			$html.= '<option value="">Semua</option>';
+			$html.= '<option value="">-- Semua Kelurahan --</option>';
 			foreach($list_kelurahan as $kel) {
 				if($ses_kelurahan_id == $kel['wilayah_id']) {
 					$html.= '<option value="'.$kel['wilayah_id'].'" selected>'.$kel['wilayah_nm'].'</option>';	

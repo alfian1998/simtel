@@ -94,7 +94,7 @@ $(function() {
 											<?php if($filter_search == 'true'):?>
 												<a href="<?=site_url('webmin_jml_warnet/search');?>" class="btn btn-success btn-icon btn-submit"><i></i> Export Excel</a>
 											<?php endif; ?>
-											<a href="<?=site_url('webmin_jml_warnet/location/jml_warnet')?>" class="btn btn-danger btn-icon btn-submit"><i></i> Clear</a>
+											<a href="<?=site_url('webmin/location/jml_warnet')?>" class="btn btn-danger btn-icon btn-submit"><i></i> Clear</a>
 										</div>
 
 										<?php if($filter_search == 'true'):?>

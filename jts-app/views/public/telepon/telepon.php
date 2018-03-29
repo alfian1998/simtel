@@ -4,11 +4,11 @@
 			dateFormat: 'dd-mm-yy' 
 		});
 		//
-		$('#ses_tgl_pendataan, #ses_opd').bind('change',function() {
+		$('#ses_tgl_pendataan, #ses_opd, #ses_tahun, #ses_bulan').bind('change',function() {
 	        $('#form-search').attr('action','<?=site_url("web/search/telepon")?>').submit();
 	    });
 
-	    $('#ses_tgl_pendataan_mobile, #ses_opd_mobile').bind('change',function() {
+	    $('#ses_tgl_pendataan_mobile, #ses_opd_mobile, #ses_tahun_mobile, #ses_bulan_mobile').bind('change',function() {
 	        $('#form-search_mobile').attr('action','<?=site_url("web/search/telepon")?>').submit();
 	    });
 	});
@@ -32,19 +32,26 @@
 									<form name="form-search" id="form-search" method="post" action="<?=site_url('web/search/telepon')?>">
 									<table width="100%">
 									<tr>
-										<td width="8%">
-											<div style="margin-bottom: 10px;"><b>Tgl Pendataan :</b></div>
+										<td width="9%">
+											<select name="ses_tahun" id="ses_tahun" class="span12 choiceChosen">
+												<option value="">-- Semua Tahun --</option>
+												<?php foreach ($list_tahun as $data): ?>
+													<option value="<?=$data['tgl_pendataan']?>" <?php if($data['tgl_pendataan'] == @$ses_tahun) echo 'selected'?>><?=$data['tgl_pendataan']?></option>
+												<?php endforeach; ?>
+											</select>
 										</td>
-										<td width="10%">
-											<div class="input-append date" id="datetimepicker" data-date-format="dd-mm-yy">
-												<input type="text" name="ses_tgl_pendataan" id="ses_tgl_pendataan" class="span8 required datepicker" value="<?=@$ses_tgl_pendataan?>" placeholder="<?=date('d-m-Y')?>">
-												<span class="add-on"><i class="icon-th"></i></span>
-											</div>
+										<td width="9%">
+											<select name="ses_bulan" id="ses_bulan" class="span12 choiceChosen">
+												<option value="">-- Semua Bulan --</option>
+												<?php 
+												$bulan = list_bulan();
+												foreach ($bulan as $key => $val): 
+												?>
+												<option value="<?=$key?>" <?php if($key == @$ses_bulan) echo 'selected'?>><?=$val?></option>
+												<?php endforeach; ?>
+											</select>
 										</td>
-										<td width="7%">
-											<div style="margin-bottom: 10px;"><b>Nama OPD :</b></div>
-										</td>
-										<td width="13%">
+										<td width="12%">
 											<select name="ses_opd" id="ses_opd" class="span12 choiceChosen">
 												<option value="">-- Semua Nama OPD --</option>
 												<?php foreach ($list_opd as $data): ?>
@@ -67,12 +74,28 @@
 										<div class="panel panel-default">
 											<div class="panel-body">
 												<div class="form-group">
-								                    <label class="col-sm-3">Tgl Pendataan</label>
+								                    <label class="col-sm-3">Tahun Pendataan</label>
 								                    <div class="col-sm-9">
-								                        <div class="input-append date" id="datetimepicker" data-date-format="dd-mm-yy">
-															<input type="text" name="ses_tgl_pendataan" id="ses_tgl_pendataan_mobile" class="span8 required datepicker" value="<?=@$ses_tgl_pendataan?>" placeholder="<?=date('d-m-Y')?>">
-															<span class="add-on"><i class="icon-th"></i></span>
-														</div>
+								                        <select name="ses_tahun" id="ses_tahun_mobile" class="span12" style="width: 60%">
+															<option value="">-- Semua Tahun --</option>
+															<?php foreach ($list_tahun as $data): ?>
+																<option value="<?=$data['tgl_pendataan']?>" <?php if($data['tgl_pendataan'] == @$ses_tahun) echo 'selected'?>><?=$data['tgl_pendataan']?></option>
+															<?php endforeach; ?>
+														</select>
+								                    </div>
+								                </div>
+								                <div class="form-group">
+								                    <label class="col-sm-3">Bulan Pendataan</label>
+								                    <div class="col-sm-9">
+								                        <select name="ses_bulan" id="ses_bulan_mobile" class="span12" style="width: 60%">
+															<option value="">-- Semua Bulan --</option>
+															<?php 
+															$bulan = list_bulan();
+															foreach ($bulan as $key => $val): 
+															?>
+																<option value="<?=$key?>" <?php if($key == @$ses_bulan) echo 'selected'?>><?=$val?></option>
+															<?php endforeach; ?>
+														</select>
 								                    </div>
 								                </div>
 								                <div class="form-group">

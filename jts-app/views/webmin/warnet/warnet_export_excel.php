@@ -98,11 +98,11 @@ $(function() {
 										</table>
 										<div class="right" style="margin-top:10px">
 											<button class="btn btn-primary btn-icon btn-submit"><i></i> Proses</button>
-											<?php if($filter_search == 'true'):?>
-												<a href="<?=site_url('webmin_report_warnet/search');?>" class="btn btn-success btn-icon btn-submit"><i></i> Export Excel</a>
-											<?php endif; ?>
 											<a href="webmin/location/report_warnet" class="btn btn-danger btn-icon btn-submit"><i></i> Clear</a>
 											<span style="margin-left: 20px;"><b>Keterangan : </b> Kolom Filter di Atas Optional</span>
+											<?php if($filter_search == 'true'):?>
+												<a href="<?=site_url('webmin_report_warnet/search');?>" style="float: right;" class="btn btn-success btn-icon btn-submit"><i></i> Export Excel</a>
+											<?php endif; ?>
 										</div>
 
 										<?php if($filter_search == 'true'):?>

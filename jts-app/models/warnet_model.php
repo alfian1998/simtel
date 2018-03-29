@@ -7,12 +7,14 @@ class Warnet_model extends CI_Model {
 
     function where_warnet() {
         $ses_txt_search = @$_SESSION['ses_txt_search'];
-        $ses_tgl_pendataan = @$_SESSION['ses_tgl_pendataan'];
+        $ses_tahun = @$_SESSION['ses_tahun'];
+        $ses_bulan = @$_SESSION['ses_bulan'];
         $ses_kecamatan = @$_SESSION['ses_kecamatan'];
         //
         $sql_where = "";
         if($ses_txt_search != '')  $sql_where .= " AND a.warnet_nm LIKE '%$ses_txt_search%' OR a.pemilik_nm LIKE '%$ses_txt_search%'";
-        if($ses_tgl_pendataan != '')  $sql_where .= " AND a.tgl_pendataan LIKE '%".convert_date($ses_tgl_pendataan)."%'";
+        if($ses_tahun != '')  $sql_where .= " AND YEAR(a.tgl_pendataan) = '$ses_tahun'";
+        if($ses_bulan != '')  $sql_where .= " AND MONTH(a.tgl_pendataan) = '$ses_bulan'";
         if($ses_kecamatan != '')  $sql_where .= " AND a.warnet_alamat_kecamatan_id LIKE '%$ses_kecamatan%'";
         return $sql_where;
     }

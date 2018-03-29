@@ -7,13 +7,25 @@ class Penyiaran_model extends CI_Model {
 
     function where_penyiaran() {
         $ses_txt_search = @$_SESSION['ses_txt_search'];
-        $ses_tgl_pendataan = @$_SESSION['ses_tgl_pendataan'];
+        $ses_tahun = @$_SESSION['ses_tahun'];
+        $ses_bulan = @$_SESSION['ses_bulan'];
         $ses_kecamatan = @$_SESSION['ses_kecamatan'];
         //
         $sql_where = "";
         if($ses_txt_search != '')  $sql_where .= " AND a.radio_nm LIKE '%$ses_txt_search%'";
-        if($ses_tgl_pendataan != '')  $sql_where .= " AND a.tgl_pendataan LIKE '%".convert_date($ses_tgl_pendataan)."%'";
+        if($ses_tahun != '')  $sql_where .= " AND YEAR(a.tgl_pendataan) = '$ses_tahun'";
+        if($ses_bulan != '')  $sql_where .= " AND MONTH(a.tgl_pendataan) = '$ses_bulan'";
         if($ses_kecamatan != '')  $sql_where .= " AND a.alamat_kecamatan_id LIKE '%$ses_kecamatan%'";
+        return $sql_where;
+    }
+
+    function where_penyiaran_maps() {
+        $ses_kecamatan_id = @$_SESSION['ses_kecamatan_id'];
+        $ses_kelurahan_id = @$_SESSION['ses_kelurahan_id'];
+        //
+        $sql_where = "";
+        if($ses_kecamatan_id != '')  $sql_where .= " AND a.alamat_kecamatan_id LIKE '%$ses_kecamatan_id%'";
+        if($ses_kelurahan_id != '')  $sql_where .= " AND a.alamat_desa_id LIKE '%$ses_kelurahan_id%'";
         return $sql_where;
     }
 
@@ -58,6 +70,22 @@ class Penyiaran_model extends CI_Model {
             $result[$key]['no'] = $no+$offset;
             $no++;
         }
+        return $result;
+    }
+
+    function get_all_penyiaran() {
+        $sql_where = $this->where_penyiaran_maps();
+        //
+        $sql = "SELECT 
+                    a.*, b.wilayah_nm as kecamatan_nm, c.wilayah_nm as desa_nm
+                FROM trx_penyiaran a 
+                LEFT JOIN mst_wilayah b ON a.alamat_kecamatan_id = b.wilayah_id
+                LEFT JOIN mst_wilayah c ON a.alamat_desa_id = c.wilayah_id
+                WHERE 1 
+                    $sql_where 
+                ORDER BY a.penyiaran_id DESC";
+        $query = $this->db->query($sql);
+        $result = $query->result_array();
         return $result;
     }
 

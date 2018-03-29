@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 100125
 File Encoding         : 65001
 
-Date: 2018-03-28 10:59:02
+Date: 2018-03-29 09:37:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1506,11 +1506,11 @@ CREATE TABLE `trx_menara` (
 -- ----------------------------
 -- Records of trx_menara
 -- ----------------------------
-INSERT INTO `trx_menara` VALUES ('19', '2018-01-01', '01', '01', 'Kebumen', '17', '08', 'Sidomulyo', '1521', '15', '57467', 'Alfian Muhammad Ardianto', null, 'Geneng', '1101', null, '11', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#02#99#', 'jhnjkhhh', '17', '18', '19', '11', '13', '12', '14', '01#02#', '', '01#', '', '100', '10', '20', '30', '40', '-7.532480128675891', '109.69608244995118', '20', '01#', '30', '01#', '', '01#', '', '01#', '', '01#02#03#04#05#', '', 'Baik Digunakan Sebelum Tanggal Produksi Tertera di bagian bawah', null, '001#002#003#', '2018-01-30 12:17:09', '5');
-INSERT INTO `trx_menara` VALUES ('20', '2018-03-29', '01', '01', 'Kebumen', '17', '08', 'Sidomulyo', '1521', '15', '57467', 'Alfian Muhammad Ardianto', null, 'Geneng', '2310', null, '23', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#02#99#', 'jhnjkhhh', '17', '18', '19', '11', '13', '12', '14', '01#02#', '', '01#', '', '100', '10', '20', '30', '40', '-7.532480128675891', '109.69608244995118', '20', '01#', '30', '01#', '', '01#', '', '01#', '', '01#02#03#04#05#', '', 'Baik Digunakan Sebelum Tanggal Produksi Tertera di bagian bawah', null, '001#002#003#', '2018-02-06 10:02:58', '5');
-INSERT INTO `trx_menara` VALUES ('21', '2017-03-29', '01', '01', 'Kebumen', '17', '08', 'Sidomulyo', '1521', '15', '57467', 'Alfian Muhammad Ardianto', null, 'Geneng', '0715', null, '07', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#02#99#', 'jhnjkhhh', '17', '18', '19', '11', '13', '12', '14', '01#02#', '', '01#', '', '100', '10', '20', '30', '40', '-7.532480128675891', '109.69608244995118', '20', '01#', '30', '01#', '', '01#', '', '01#', '', '01#02#03#04#05#', '', 'Baik Digunakan Sebelum Tanggal Produksi Tertera di bagian bawah', null, '001#002#003#', '2018-02-06 10:55:35', '5');
-INSERT INTO `trx_menara` VALUES ('22', '2017-03-29', '01', '01', 'Kebumen', '17', '08', 'Sidomulyo', '1521', '15', '57467', 'Alfian Muhammad Ardianto', null, 'Geneng', '0712', null, '07', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#02#99#', 'jhnjkhhh', '17', '18', '19', '11', '13', '12', '14', '01#02#', '', '01#', '', '100', '10', '20', '30', '40', '-7.532480128675891', '109.69608244995118', '20', '01#', '30', '01#', '', '01#', '', '01#', '', '01#02#03#04#05#', '', 'Baik Digunakan Sebelum Tanggal Produksi Tertera di bagian bawah', null, '001#002#003#', '2018-02-05 13:04:46', '5');
-INSERT INTO `trx_menara` VALUES ('23', '2018-03-21', '01', '01', 'Kebumen Kota11', '17', '08', 'Kebumen', '1224', '12', '57467', 'Pemilik Menara Kebumen', null, 'Kebumen Kota', '1224', null, '12', null, 'Kebumen', 'Jawa Tengah', '08953992759256', '57467', '01#02#', '', '70', '80', '90', '10', '20', '10', '20', '01#', '', '01#', '', '100', '10', '20', '30', '40', '-7.6359371967134', '109.6425241003418', '20', '01#', '10', '01#', '', '01#', '', '01#', '', '01#', '', 'Catatan Pelaksana Kalo Ada112233\r\n\r\n', 'kominfo.kebumenkab.go.id.270318-6f181f206b8555c5dc619bc206ab35ad.jpg', '001#002#003#', '2018-03-27 11:11:00', '5');
+INSERT INTO `trx_menara` VALUES ('19', '2018-01-01', '01', '01', 'Kebumen', '17', '08', 'Sidomulyo', '1521', '15', '57467', 'Alfian Muhammad Ardianto', null, 'Geneng', '1101', null, '11', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#02#99#', 'jhnjkhhh', '17', '18', '19', '11', '13', '12', '14', '01#02#', '', '01#', '', '100', '10', '20', '30', '40', '-7.6890173076135655', '109.48184905151368', '20', '01#', '30', '01#', '', '01#', '', '01#', '', '01#02#03#04#05#', '', 'Baik Digunakan Sebelum Tanggal Produksi Tertera di bagian bawah', 'kominfo.kebumenkab.go.id.280318-538b45ef5c6f26b001e71b1c55b26a2c.jpg', '001#002#003#', '2018-03-28 11:41:31', '5');
+INSERT INTO `trx_menara` VALUES ('20', '2018-03-29', '01', '01', 'Kebumen', '17', '08', 'Sidomulyo', '1521', '15', '57467', 'Alfian Muhammad Ardianto', null, 'Geneng', '2310', null, '23', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#02#99#', 'jhnjkhhh', '17', '18', '19', '11', '13', '12', '14', '01#02#', '', '01#', '', '100', '10', '20', '30', '40', '-7.595101853125185', '109.5656198034668', '20', '01#', '30', '01#', '', '01#', '', '01#', '', '01#02#03#04#05#', '', 'Baik Digunakan Sebelum Tanggal Produksi Tertera di bagian bawah', 'kominfo.kebumenkab.go.id.280318-74d8ce91d143cad52fad9d3661dded18.jpg', '001#002#003#', '2018-03-28 11:41:21', '5');
+INSERT INTO `trx_menara` VALUES ('21', '2017-03-29', '01', '01', 'Kebumen', '17', '08', 'Sidomulyo', '1521', '15', '57467', 'Alfian Muhammad Ardianto', null, 'Geneng', '0715', null, '07', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#02#99#', 'jhnjkhhh', '17', '18', '19', '11', '13', '12', '14', '01#02#', '', '01#', '', '100', '10', '20', '30', '40', '-7.558346724963166', '109.55051360229493', '20', '01#', '30', '01#', '', '01#', '', '01#', '', '01#02#03#04#05#', '', 'Baik Digunakan Sebelum Tanggal Produksi Tertera di bagian bawah', 'kominfo.kebumenkab.go.id.280318-e39a411b54c3ce46fd382fef7f632157.jpg', '001#002#003#', '2018-03-28 11:41:15', '5');
+INSERT INTO `trx_menara` VALUES ('22', '2017-03-29', '01', '01', 'Kebumen', '17', '08', 'Sidomulyo', '1521', '15', '57467', 'Alfian Muhammad Ardianto', null, 'Geneng', '0712', null, '07', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#02#99#', 'jhnjkhhh', '17', '18', '19', '11', '13', '12', '14', '01#02#', '', '01#', '', '100', '10', '20', '30', '40', '-7.532480128675891', '109.69608244995118', '20', '01#', '30', '01#', '', '01#', '', '01#', '', '01#02#03#04#05#', '', 'Baik Digunakan Sebelum Tanggal Produksi Tertera di bagian bawah', 'kominfo.kebumenkab.go.id.280318-4a0f84dd91471107bf6a1dfce1d62fc0.jpg', '001#002#003#', '2018-03-28 11:41:07', '5');
+INSERT INTO `trx_menara` VALUES ('23', '2018-03-21', '01', '01', 'Kebumen Kota11', '17', '08', 'Kebumen', '1224', '12', '57467', 'Pemilik Menara Kebumen', null, 'Kebumen Kota', '1224', null, '12', null, 'Kebumen', 'Jawa Tengah', '08953992759256', '57467', '01#02#', '', '70', '80', '90', '10', '20', '10', '20', '01#', '', '01#', '', '100', '10', '20', '30', '40', '-7.6359371967134', '109.6425241003418', '20', '01#', '10', '01#', '', '01#', '', '01#', '', '01#', '', 'Catatan Pelaksana Kalo Ada112233\r\n\r\n', 'kominfo.kebumenkab.go.id.280318-6f181f206b8555c5dc619bc206ab35ad.jpg', '001#002#003#', '2018-03-28 11:40:59', '5');
 
 -- ----------------------------
 -- Table structure for trx_penyiaran
@@ -1855,10 +1855,9 @@ CREATE TABLE `trx_warnet` (
 -- ----------------------------
 -- Records of trx_warnet
 -- ----------------------------
-INSERT INTO `trx_warnet` VALUES ('6', '2018-01-23', '01', '01', 'Alfian NET', 'Geneng', '1507', '15', '57467', '085678876543', 'Alfian Muhammad Ardianto', null, 'Geneng', '1101', null, '11', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#', '2134213123213', '2018-01-08', '2018-01-17', '01#', '24324234234', '2018-01-17', '2018-01-22', '02#', '', null, null, '01#02#', '03#99#', 'Layanan', '99#', 'LAN', '100', null, '99#', 'AIOU', '99:12#', '01#', null, '01:10#', '01#', '01:10#', '01#', '02#', '02:10#', '01#', 'Internet Positif', '12', '5', '5', '1', '99#', '01#02#', 'Sekat', '99#', 'Bilik Lain', '99#', 'Lantai Lain', '02#', '99#', 'H+', '07:00', '21:00', '01#', '01#', '01#02#99#', 'Mouse', '02#', '03#', '01#', null, null, null, '02#', '001#002#003#', '2018-01-30 14:57:34', '5');
-INSERT INTO `trx_warnet` VALUES ('9', '2018-01-27', '01', '01', 'Warnet NET', 'Kebumen', '1224', '12', '57467', '08327489324', 'Tes', null, 'Geneng', '1507', null, '15', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#', '2134213123213', '2018-01-01', '2018-01-02', '01#', '43535345', '2018-01-02', '2018-01-30', '02#', '', null, null, '01#02#', '01#99#', 'Printer', '99#', 'LAN', '100', null, '04#99#', 'Komputer', '04:20#99:23#', '01#02#', null, '01:10#02:20#', '01#', '01:10#', '01#', '01#', '01:23#', '01#', 'Ada', '10', '5', '10', '1', '01#', '01#', 'Sekat', '01#', '', '99#', 'Lantai Lain', '01#', '99#', 'H+', '07:00', '21:00', '01#', '01#', '01#02#99#', 'Mouse', '03#', '02#03#', '01#', null, null, null, '02#', '001#002#003#', '2018-01-30 16:06:08', '5');
-INSERT INTO `trx_warnet` VALUES ('10', '2018-03-21', '01', '01', 'Kebumen NET', 'Kebumen', '1224', '12', '57467', '0895392759256', 'Pemilik Kebumen NET', null, 'Kebumen', '1224', null, '12', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#', '2134213123213', '2018-03-01', '2018-03-02', '02#', '', null, null, '01#', '987328472398', '2018-03-09', '2018-03-19', '01#', '99#', 'Layanan Lain', '01#', '', '14', null, '01#', '', '01:14#', '01#', null, '01:14#', '01#', '01:12#', '02#', '01#', '01:15#', '02#', '', '12', '5', '10', '1', '01#', '01#', 'Sekat', '01#', '', null, '', '01#', '01#', '', '07:00', '21:00', '01#', '01#', '01#', '', '01#', '02#', '02#', '-7.578766627837034', '109.72080168823243', 'kominfo.kebumenkab.go.id.270318-8d8e353b98d5191d5ceea1aa3eb05d43.jpg', '02#', '001#002#003#', '2018-03-27 11:20:05', '5');
-INSERT INTO `trx_warnet` VALUES ('11', '2018-03-27', '01', '01', 'Warung Internet', '', '', '', '', '', '', null, '', '1101', null, '11', null, 'Kebumen', 'Jawa Tengah', '', '', null, '', null, null, null, '', null, null, null, '', null, null, null, null, '', null, '', '', null, null, '', '', null, null, '', null, '', null, null, '', null, '', '', '', '', '', null, null, '', null, '', null, '', null, null, '', '', '', null, null, null, '', null, null, null, '-7.604630447855709', '109.57385954956055', null, null, '001#002#003#', '2018-03-27 16:48:54', '5');
+INSERT INTO `trx_warnet` VALUES ('6', '2018-01-23', '01', '01', 'Alfian NET', 'Geneng', '1507', '15', '57467', '085678876543', 'Alfian Muhammad Ardianto', null, 'Geneng', '1101', null, '11', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#', '2134213123213', '2018-01-08', '2018-01-17', '01#', '24324234234', '2018-01-17', '2018-01-22', '02#', '', null, null, '01#02#', '03#99#', 'Layanan', '99#', 'LAN', '100', null, '99#', 'AIOU', '99:12#', '01#', null, '01:10#', '01#', '01:10#', '01#', '02#', '02:10#', '01#', 'Internet Positif', '12', '5', '5', '1', '99#', '01#02#', 'Sekat', '99#', 'Bilik Lain', '99#', 'Lantai Lain', '02#', '99#', 'H+', '07:00', '21:00', '01#', '01#', '01#02#99#', 'Mouse', '02#', '03#', '01#', '-7.784272621670883', '109.76474700073243', 'kominfo.kebumenkab.go.id.280318-3d2f8900f2e49c02b481c2f717aa9020.jpg', '02#', '001#002#003#', '2018-03-28 13:41:12', '5');
+INSERT INTO `trx_warnet` VALUES ('9', '2018-01-27', '01', '01', 'Warnet NET', 'Kebumen', '1224', '12', '57467', '08327489324', 'Tes', null, 'Geneng', '1507', null, '15', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#', '2134213123213', '2018-01-01', '2018-01-02', '01#', '43535345', '2018-01-02', '2018-01-30', '02#', '', null, null, '01#02#', '01#99#', 'Printer', '99#', 'LAN', '100', null, '04#99#', 'Komputer', '04:20#99:23#', '01#02#', null, '01:10#02:20#', '01#', '01:10#', '01#', '01#', '01:23#', '01#', 'Ada', '10', '5', '10', '1', '01#', '01#', 'Sekat', '01#', '', '99#', 'Lantai Lain', '01#', '99#', 'H+', '07:00', '21:00', '01#', '01#', '01#02#99#', 'Mouse', '03#', '02#03#', '01#', '-7.714874446810137', '109.47910246948243', 'kominfo.kebumenkab.go.id.280318-4c0d13d3ad6cc317017872e51d01b238.jpg', '02#', '001#002#003#', '2018-03-28 13:40:14', '5');
+INSERT INTO `trx_warnet` VALUES ('10', '2018-03-21', '01', '01', 'Kebumen NET', 'Kebumen', '1224', '12', '57467', '0895392759256', 'Pemilik Kebumen NET', null, 'Kebumen', '1224', null, '12', null, 'Kebumen', 'Jawa Tengah', '085678765434', '57467', '01#', '2134213123213', '2018-03-01', '2018-03-02', '02#', '', null, null, '01#', '987328472398', '2018-03-09', '2018-03-19', '01#', '99#', 'Layanan Lain', '01#', '', '14', null, '01#', '', '01:14#', '01#', null, '01:14#', '01#', '01:12#', '02#', '01#', '01:15#', '02#', '', '12', '5', '10', '1', '01#', '01#', 'Sekat', '01#', '', null, '', '01#', '01#', '', '07:00', '21:00', '01#', '01#', '01#', '', '01#', '02#', '02#', '-7.558346724963166', '109.56973967651368', 'kominfo.kebumenkab.go.id.270318-8d8e353b98d5191d5ceea1aa3eb05d43.jpg', '02#', '001#002#003#', '2018-03-28 13:33:06', '5');
 
 -- ----------------------------
 -- Table structure for trx_warsel
@@ -2170,7 +2169,7 @@ CREATE TABLE `_menu` (
   `menu_webmin` varchar(30) DEFAULT NULL,
   `menu_category` char(1) DEFAULT 'I' COMMENT 'I:internal,E:external',
   PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=64 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of _menu
@@ -2195,13 +2194,13 @@ INSERT INTO `_menu` VALUES ('24', '3', 'Info Lembaga Kursus & Pelatihan', '8', n
 INSERT INTO `_menu` VALUES ('32', '4', 'Info & Pengaduan', '3', null, '1', 'www.emailmeform.com/builder/form/cx20vbf05hQ8dmLXff2Na', null, 'E');
 INSERT INTO `_menu` VALUES ('33', '0', 'Informasi dan Pengaduan', '10', null, '0', '/informasi-dan-pengaduan', 'post', 'I');
 INSERT INTO `_menu` VALUES ('34', '0', 'Data Pelaksanaan', '3', null, '1', '/data-pelaksanaan', 'post', 'I');
-INSERT INTO `_menu` VALUES ('35', '34', 'Menara', '1', null, '1', '/menara', null, 'I');
-INSERT INTO `_menu` VALUES ('36', '34', 'Warnet', '2', null, '1', '/warnet', null, 'I');
-INSERT INTO `_menu` VALUES ('37', '34', 'Warsel', '3', null, '1', '/warsel', null, 'I');
-INSERT INTO `_menu` VALUES ('38', '34', 'Penyiaran Radio & Televisi', '4', null, '1', '/penyiaran', null, 'I');
-INSERT INTO `_menu` VALUES ('39', '34', 'Jaringan Extension', '5', null, '1', '/extension', null, 'I');
-INSERT INTO `_menu` VALUES ('40', '34', 'Jaringan Telepon/RIG', '6', null, '1', '/telepon', 'post', 'I');
-INSERT INTO `_menu` VALUES ('41', '34', 'Sinyal Seluler', '7', null, '1', '/sinyal', 'post', 'I');
+INSERT INTO `_menu` VALUES ('35', '34', 'Menara', '1', null, '1', '/location/menara', null, 'I');
+INSERT INTO `_menu` VALUES ('36', '34', 'Warnet', '2', null, '1', '/location/warnet', null, 'I');
+INSERT INTO `_menu` VALUES ('37', '34', 'Warsel', '3', null, '1', '/location/warsel', null, 'I');
+INSERT INTO `_menu` VALUES ('38', '34', 'Penyiaran Radio & Televisi', '4', null, '1', '/location/penyiaran', null, 'I');
+INSERT INTO `_menu` VALUES ('39', '34', 'Jaringan Extension', '5', null, '1', '/location/extension', null, 'I');
+INSERT INTO `_menu` VALUES ('40', '34', 'Jaringan Telepon/RIG', '6', null, '1', '/location/telepon', 'post', 'I');
+INSERT INTO `_menu` VALUES ('41', '34', 'Sinyal Seluler', '7', null, '1', '/location/sinyal', 'post', 'I');
 INSERT INTO `_menu` VALUES ('42', '0', 'Diagram Chart', '8', null, '0', '/diagram_chart', 'post', 'I');
 INSERT INTO `_menu` VALUES ('43', '0', 'Statistik Data', '3', null, '1', '/statistik-data', 'post', 'I');
 INSERT INTO `_menu` VALUES ('44', '43', 'Menara', '1', null, '1', '/location/jml_menara', null, 'I');
@@ -2212,9 +2211,11 @@ INSERT INTO `_menu` VALUES ('48', '43', 'Jaringan Extension', '5', null, '1', '/
 INSERT INTO `_menu` VALUES ('49', '43', 'Jaringan Telepon/RIG', '6', null, '1', '/location/jml_telepon', null, 'I');
 INSERT INTO `_menu` VALUES ('50', '43', 'Sinyal Seluler', '7', null, '1', '/location/jml_sinyal', null, 'I');
 INSERT INTO `_menu` VALUES ('51', '0', 'Peta Sebaran', '3', null, '1', '/peta-sebaran', 'post', 'I');
-INSERT INTO `_menu` VALUES ('52', '51', 'Menara', '1', null, '1', '/menara', null, 'I');
-INSERT INTO `_menu` VALUES ('53', '51', 'Warnet', '2', null, '1', '/warnet', null, 'I');
-INSERT INTO `_menu` VALUES ('55', '51', 'Penyiaran Radio & Televisi', '4', null, '1', '/penyiaran-radio-', null, 'I');
+INSERT INTO `_menu` VALUES ('52', '51', 'Menara', '1', null, '1', '/location/maps_menara', null, 'I');
+INSERT INTO `_menu` VALUES ('53', '51', 'Warnet', '2', null, '1', '/location/maps_warnet', null, 'I');
+INSERT INTO `_menu` VALUES ('55', '51', 'Penyiaran Radio & Televisi', '4', null, '1', '/location/maps_penyiaran', null, 'I');
+INSERT INTO `_menu` VALUES ('60', '51', 'Warsel', '3', null, '1', '/location/maps_warsel', null, 'I');
+INSERT INTO `_menu` VALUES ('63', '51', 'Sinyal Seluler', '7', null, '1', '/location/maps_sinyal', null, 'I');
 
 -- ----------------------------
 -- Table structure for _polling
@@ -2357,7 +2358,7 @@ CREATE TABLE `_sessions` (
 -- ----------------------------
 -- Records of _sessions
 -- ----------------------------
-INSERT INTO `_sessions` VALUES ('6cb4931109b3582638b651bf06f1d592', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36', '1522209453', 'a:8:{s:9:\"user_data\";s:0:\"\";s:9:\"ses_login\";i:1;s:10:\"ses_userid\";s:1:\"5\";s:12:\"ses_username\";s:5:\"admin\";s:13:\"ses_usergroup\";s:1:\"1\";s:16:\"ses_userrealname\";s:7:\"Admin 2\";s:13:\"ses_lastlogin\";s:19:\"2018-03-28 10:47:12\";s:10:\"ses_userst\";s:1:\"1\";}');
+INSERT INTO `_sessions` VALUES ('42547150f09c02d732b07aa87b7dea2d', '0.0.0.0', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36', '1522290873', 'a:7:{s:9:\"ses_login\";i:1;s:10:\"ses_userid\";s:1:\"5\";s:12:\"ses_username\";s:5:\"admin\";s:13:\"ses_usergroup\";s:1:\"1\";s:16:\"ses_userrealname\";s:7:\"Admin 2\";s:13:\"ses_lastlogin\";s:19:\"2018-03-28 20:00:35\";s:10:\"ses_userst\";s:1:\"1\";}');
 
 -- ----------------------------
 -- Table structure for _slideshow
@@ -2387,7 +2388,7 @@ CREATE TABLE `_statistic` (
   `statistic_date` date NOT NULL,
   `statistic_visitor` int(10) NOT NULL,
   PRIMARY KEY (`statistic_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=155 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=156 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 -- Records of _statistic
@@ -2545,7 +2546,8 @@ INSERT INTO `_statistic` VALUES ('150', '2018-03-23', '28');
 INSERT INTO `_statistic` VALUES ('151', '2018-03-24', '3');
 INSERT INTO `_statistic` VALUES ('152', '2018-03-26', '7');
 INSERT INTO `_statistic` VALUES ('153', '2018-03-27', '7');
-INSERT INTO `_statistic` VALUES ('154', '2018-03-28', '9');
+INSERT INTO `_statistic` VALUES ('154', '2018-03-28', '21');
+INSERT INTO `_statistic` VALUES ('155', '2018-03-29', '2');
 
 -- ----------------------------
 -- Table structure for _user
@@ -2567,4 +2569,4 @@ CREATE TABLE `_user` (
 -- ----------------------------
 -- Records of _user
 -- ----------------------------
-INSERT INTO `_user` VALUES ('5', 'admin', '77e2edcc9b40441200e31dc57dbb8829', 'Admin 2', '1', '1', '', '2018-03-28 10:47:30', '1');
+INSERT INTO `_user` VALUES ('5', 'admin', '77e2edcc9b40441200e31dc57dbb8829', 'Admin 2', '1', '1', '', '2018-03-29 07:50:28', '1');

@@ -215,12 +215,14 @@ class Webmin_Penyiaran extends CI_Controller{
 		$data['p'] = $p;
 		$data['o'] = $o;
 		$data['ses_txt_search'] = @$_SESSION['ses_txt_search'];
-		$data['ses_tgl_pendataan'] = @$_SESSION['ses_tgl_pendataan'];
+		$data['ses_tahun'] = @$_SESSION['ses_tahun'];
+		$data['ses_bulan'] = @$_SESSION['ses_bulan'];
 		$data['ses_kecamatan'] = @$_SESSION['ses_kecamatan'];
 		//
 		$data['paging'] = $this->penyiaran_model->paging_penyiaran($p,$o);
 		$data['list_penyiaran'] = $this->penyiaran_model->list_penyiaran($o, $data['paging']->offset, $data['paging']->per_page);
 		$data['list_kecamatan'] = $this->penyiaran_model->get_kecamatan();
+		$data['list_tahun'] = $this->penyiaran_model->get_tahun();
 		//
 		$this->load->view('webmin/main/header',$header);		
 		$this->load->view('webmin/penyiaran/penyiaran_index',$data);
@@ -332,11 +334,13 @@ class Webmin_Penyiaran extends CI_Controller{
 	
 	function search() {
 		$ses_txt_search = $this->input->post('ses_txt_search');	
-		$ses_tgl_pendataan = $this->input->post('ses_tgl_pendataan');	
+		$ses_tahun = $this->input->post('ses_tahun');	
+		$ses_bulan = $this->input->post('ses_bulan');	
 		$ses_kecamatan = $this->input->post('ses_kecamatan');	
 		//	
 		$_SESSION['ses_txt_search'] = ($ses_txt_search != '') ? $ses_txt_search : false;
-		$_SESSION['ses_tgl_pendataan'] = ($ses_tgl_pendataan != '') ? $ses_tgl_pendataan : false;
+		$_SESSION['ses_tahun'] = ($ses_tahun != '') ? $ses_tahun : false;
+		$_SESSION['ses_bulan'] = ($ses_bulan != '') ? $ses_bulan : false;
 		$_SESSION['ses_kecamatan'] = ($ses_kecamatan != '') ? $ses_kecamatan : false;
 		//
 		redirect('webmin_penyiaran/index');

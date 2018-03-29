@@ -7,12 +7,14 @@ class Telepon_model extends CI_Model {
 
     function where_telepon() {
         $ses_txt_search = @$_SESSION['ses_txt_search'];
-        $ses_tgl_pendataan = @$_SESSION['ses_tgl_pendataan'];
+        $ses_tahun = @$_SESSION['ses_tahun'];
+        $ses_bulan = @$_SESSION['ses_bulan'];
         $ses_opd = @$_SESSION['ses_opd'];
         //
         $sql_where = "";
         if($ses_txt_search != '')  $sql_where .= " AND a.thn_anggaran LIKE '%$ses_txt_search%'";
-        if($ses_tgl_pendataan != '')  $sql_where .= " AND a.tgl_pendataan LIKE '%".convert_date($ses_tgl_pendataan)."%'";
+        if($ses_tahun != '')  $sql_where .= " AND YEAR(a.tgl_pendataan) = '$ses_tahun'";
+        if($ses_bulan != '')  $sql_where .= " AND MONTH(a.tgl_pendataan) = '$ses_bulan'";
         if($ses_opd != '')  $sql_where .= " AND a.opd_id LIKE '%$ses_opd%'";
         return $sql_where;
     }
